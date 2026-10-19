@@ -1,0 +1,23 @@
+name: Build APK
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: unzip -q tv-remote-macros.zip
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: android-actions/setup-android@v3
+      - run: |
+          cd tv-remote-master/tv-remote-apk
+          chmod +x gradlew
+          ./gradlew assembleDebug
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          files: tv-remote-master/tv-remote-apk/app/build/outputs/apk/debug/app-debug.apk
