@@ -1,0 +1,10 @@
+name: Unzip
+on: workflow_dispatch
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: unzip -q tv-remote-macros.zip -d extracted
+      - run: ls -R extracted
