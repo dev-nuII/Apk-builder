@@ -1,0 +1,1 @@
+v1.6: Adds standby wake for Kodi remotes — the TV wakes and Kodi comes to the front when Yatse Remote Starter or Kore sends its wake packet. The on-device HTTP port is now configurable, with the default unchanged at 8080. The battery-exemption prompt opens the system settings screen instead of asking for a restricted permission. Contributed by Nicolas da Luz Duque.
